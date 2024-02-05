@@ -1,0 +1,24 @@
+// schema.prisma
+
+generator client {
+  engineType = "binary" // Note: This seems to fix an issue with segmentation faults
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model HealthForm {
+  id    Int    @id @default(autoincrement())
+  companyUEN  String
+  companyName String
+  email String @unique
+  name String
+  position String
+  phone String
+  attachments String[]
+  createdAtUtc DateTime @db.Timestamptz(3) @default(now())
+  updatedAtUtc DateTime @db.Timestamptz(3) @default(now())
+}

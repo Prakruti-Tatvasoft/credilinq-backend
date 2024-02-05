@@ -1,0 +1,41 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateHealthFormInput {
+  companyName: String!
+  companyUEN: String!
+  email: String!
+  name: String!
+  phone: String!
+  position: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type HealthForm {
+  attachments: [String!]!
+  companyName: String!
+  companyUEN: String!
+  createdAtUtc: DateTime!
+  email: String!
+  id: ID!
+  name: String!
+  phone: String!
+  position: String!
+  updatedAtUtc: DateTime!
+}
+
+type Mutation {
+  createHealthForm(file: [Upload!]!, input: CreateHealthFormInput!): HealthForm!
+}
+
+type Query {
+  retrieveHealthFormData: [HealthForm!]!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
